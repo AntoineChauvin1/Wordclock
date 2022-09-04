@@ -1,0 +1,69 @@
+esphome:
+  name: wordclock-v2
+  includes:
+    - wordclock-v2.h
+  on_boot:
+    priority: 800
+    then:
+      - light.turn_on: 
+          id: fastledlight
+          
+esp8266:
+  board: d1_mini
+  framework:
+    version: 2.7.4
+          
+substitutions:
+  devicename: wordclock
+  friendly_name: "Wordclock"
+
+wifi:
+  ssid: "UPC7C77516"
+  password: "x"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Horloge Fallback Hotspot"
+    password: "XoymMezOh6xT"
+
+# WEB Server
+web_server:
+  port: 80
+  
+# Sensors
+#sensor:
+#  - platform: wifi_signal
+#    name: "th0 Signal Wi-Fi"
+#    update_interval: 60s
+    
+# Enable logging
+logger:
+#    level: VERBOSE
+    
+# Enable Home Assistant API
+api:
+  password: "Antoine@01"
+
+ota:
+  password: "6b9bea9b74f9f7f001ee08abded84011"
+
+
+
+light:
+  - platform: fastled_clockless
+    id: fastledlight
+    rgb_order: GRB
+    chipset: WS2811
+    pin: D1
+    restore_mode: RESTORE_DEFAULT_ON
+    num_leds: 114
+    name: ${friendly_name}
+  
+time:
+  - platform: homeassistant
+    id: current_time
+
+custom_component:
+- lambda: |-
+    auto wordclock = new Wordclock();
+    return {wordclock};
