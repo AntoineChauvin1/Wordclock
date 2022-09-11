@@ -15,11 +15,19 @@ quand le timer arrive a la limite définie, la luminosité passe a 0.
 
 lux   luminosité
 0-6        4
+
 7-20       10
+
 21-40      13
+
 41-60      16
+
 61-80      45
+
 81-100     48
+
 100-130    50
+
 130-150    51
+
 150-500    52
