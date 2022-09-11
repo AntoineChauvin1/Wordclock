@@ -14,6 +14,7 @@ L'horloge a une luminosité suivant la table en annexe 1 tant que le compteur n'
 quand le timer arrive a la limite définie, la luminosité passe a 0.
 
 lux   luminosité
+
 0-6        4
 
 7-20       10
